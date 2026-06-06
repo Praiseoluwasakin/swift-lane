@@ -1,0 +1,1250 @@
+<!-- Job Magnet System Landing Page -->
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Job Magnet System | Swift Lane</title>
+    <meta
+      content="Position yourself as a hireable data analyst with the Job Magnet System. Stop the job hunt exhaustion."
+      name="description"
+    />
+    <link rel="icon" href="/images/logoimage.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .fill-icon {
+        font-variation-settings: "FILL" 1;
+      }
+      /* Custom Orange for high conversion as per brand guidance */
+      .bg-cta-orange {
+        background-color: #fe7419;
+      }
+      .text-cta-orange {
+        color: #fe7419;
+      }
+
+      .bento-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bento-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Mobile overlay animations */
+      #mobile-overlay {
+        transition:
+          opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #mobile-overlay:not(.hidden) {
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      #mobile-overlay.hidden {
+        animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        visibility: hidden;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(100%);
+          visibility: hidden;
+        }
+      }
+
+      /* FAQ animations */
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+      }
+      .faq-answer:not(.hidden) {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .faq-icon {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* FAQ card hover */
+      .faq-card {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .faq-card:hover {
+        background-color: #f3f4f5;
+        border-color: #51c678;
+        box-shadow: 0px 4px 12px rgba(81, 198, 120, 0.1);
+      }
+      .faq-card:hover .faq-icon {
+        color: #fe7419;
+      }
+
+      /* Section headers — simpler: slightly larger, bolder, color variants applied per section */
+      .section-title-strong {
+        font-weight: 800;
+      }
+      .section-title-lg {
+        font-size: 1.75rem; /* slightly larger */
+      }
+      /* Utility colors for headers */
+      .section-title-black {
+        color: #191c1d;
+      }
+      .section-title-green {
+        color: #006d36;
+      }
+      .section-title-orange {
+        color: #fe7419;
+      }
+
+      /* Card hover animations */
+      .testimonial-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .testimonial-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0px 8px 24px rgba(81, 198, 120, 0.15);
+        border-color: #51c678;
+      }
+
+      /* Button animations */
+      button,
+      a[class*="bg-cta-orange"],
+      a[class*="bg-primary"] {
+        transition: all 0.2s ease;
+      }
+      button:hover,
+      a[class*="bg-cta-orange"]:hover,
+      a[class*="bg-primary"]:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        box-shadow: 0px 6px 16px rgba(254, 116, 25, 0.2);
+      }
+
+      /* Navigation link animations */
+      nav a:not([class*="bg-"]) {
+        position: relative;
+        padding-bottom: 2px;
+      }
+      nav a:not([class*="bg-"])::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #006d36;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      nav a:not([class*="bg-"]):hover::after {
+        width: 100%;
+      }
+
+      /* Mobile menu link animations */
+      #mobile-overlay a {
+        position: relative;
+        padding-bottom: 4px;
+      }
+      #mobile-overlay a:not([class*="bg-"])::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        background: linear-gradient(90deg, #006d36, #51c678);
+        transition:
+          width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+      }
+      #mobile-overlay a:not([class*="bg-"]):hover::after {
+        width: 100%;
+        left: 50%;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e1e3e4",
+              background: "#f8f9fa",
+              "surface-container-high": "#e7e8e9",
+              "on-background": "#191c1d",
+              "surface-container-low": "#f3f4f5",
+              "on-error-container": "#93000a",
+              "on-primary": "#ffffff",
+              "outline-variant": "#bdcabc",
+              "inverse-on-surface": "#f0f1f2",
+              "primary-container": "#51c678",
+              "on-surface": "#191c1d",
+              secondary: "#9e4200",
+              "inverse-primary": "#69dd8c",
+              "on-secondary-container": "#5d2400",
+              "primary-fixed": "#86faa6",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#ffdbcb",
+              "secondary-fixed-dim": "#ffb691",
+              "on-primary-container": "#004e25",
+              "error-container": "#ffdad6",
+              error: "#ba1a1a",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed-dim": "#69dd8c",
+              "on-secondary-fixed": "#341100",
+              "on-primary-fixed": "#00210c",
+              "secondary-container": "#ff751b",
+              "surface-bright": "#f8f9fa",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#474747",
+              "inverse-surface": "#2e3132",
+              "surface-dim": "#d9dadb",
+              "on-tertiary-container": "#434343",
+              "on-primary-fixed-variant": "#005227",
+              "surface-container": "#edeeef",
+              "on-secondary-fixed-variant": "#793100",
+              "on-tertiary-fixed": "#1b1c1c",
+              outline: "#6e7a6e",
+              tertiary: "#5f5e5e",
+              surface: "#f8f9fa",
+              "tertiary-container": "#b2b0b0",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#3e4a3f",
+              "tertiary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              primary: "#006d36",
+              "surface-tint": "#006d36",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "section-padding-mobile": "64px",
+              "stack-md": "24px",
+              "section-padding-desktop": "120px",
+              "stack-sm": "12px",
+              gutter: "24px",
+              "stack-lg": "48px",
+              base: "8px",
+            },
+            fontFamily: {
+              "headline-lg-mobile": ["Inter"],
+              "display-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "headline-sm": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-lg": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg-mobile": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "700" },
+              ],
+              "display-lg": [
+                "64px",
+                {
+                  lineHeight: "72px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "800",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "headline-sm": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "700" },
+              ],
+              "headline-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- Top Navigation Shell -->
+    <header
+      class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant shadow-sm"
+    >
+      <nav
+        class="flex justify-between items-center px-6 md:px-gutter py-4 max-w-7xl mx-auto"
+      >
+        <div class="flex items-center">
+          <img
+            alt="Swift Lane Logo"
+            class="h-14 w-auto"
+            src="/images/logoimage.png"
+          />
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+            href="#how-it-works"
+            >How it Works</a
+          >
+          <a
+            class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+            href="#inside"
+            >Inside the System</a
+          >
+          <a
+            class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+            href="#testimonials"
+            >Testimonials</a
+          >
+          <a
+            class="px-6 py-2 bg-cta-orange text-white font-label-md rounded-lg shadow-sm hover:brightness-110 transition-all active:scale-[0.98]"
+            href="#pricing"
+            >Get Started</a
+          >
+        </div>
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2"
+          aria-label="Open menu"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </nav>
+    </header>
+    <div
+      id="mobile-overlay"
+      class="fixed inset-0 z-50 hidden bg-surface/95 backdrop-blur-md p-6 overflow-y-auto"
+    >
+      <div class="flex justify-end">
+        <button
+          id="mobile-menu-close"
+          class="p-2 text-on-surface-variant"
+          aria-label="Close menu"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mt-12 flex flex-col gap-6 text-center">
+        <a
+          class="font-headline-sm text-on-surface hover:text-primary transition-colors"
+          href="#how-it-works"
+          >How it Works</a
+        >
+        <a
+          class="font-headline-sm text-on-surface hover:text-primary transition-colors"
+          href="#inside"
+          >Inside the System</a
+        >
+        <a
+          class="font-headline-sm text-on-surface hover:text-primary transition-colors"
+          href="#testimonials"
+          >Testimonials</a
+        >
+        <a
+          class="inline-block px-8 py-4 bg-cta-orange text-white font-semibold rounded-full shadow-lg hover:brightness-110 transition-all"
+          href="https://stan.store/SwiftLanetodatajobs"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Buy Now</a
+        >
+      </div>
+    </div>
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section
+        class="relative overflow-hidden pt-section-padding-mobile lg:pt-section-padding-desktop pb-section-padding-mobile lg:pb-section-padding-desktop transition-all duration-700 ease-out opacity-100"
+      >
+        <div
+          class="max-w-7xl mx-auto px-gutter grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <div class="z-10 text-center lg:text-left">
+            <span
+              class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-container/10 text-primary font-label-md"
+              >THE JOB MAGNET SYSTEM</span
+            >
+            <h1
+              class="font-display-lg text-4xl lg:text-display-lg text-on-surface leading-tight mb-6"
+            >
+              Stop Getting Ignored.
+              <span class="text-primary">Start Positioning</span> Yourself Like
+              Someone Companies Want to Hire.
+            </h1>
+            <p
+              class="font-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto lg:mx-0"
+            >
+              Exhausted by the endless loop of "Apply, Wait, Rejected"? You
+              aren't lacking skills; you're lacking the signals that trigger an
+              interview.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <a
+                class="px-10 py-4 bg-cta-orange text-white font-headline-sm rounded-lg shadow-lg hover:brightness-110 transition-all text-center"
+                href="#pricing"
+              >
+                Start Your Positioning Today
+              </a>
+              <a
+                class="px-10 py-4 border-2 border-primary text-primary font-headline-sm rounded-lg hover:bg-primary/5 transition-all text-center"
+                href="#how-it-works"
+              >
+                See How it Works
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -top-12 -left-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl"
+            >
+              <img
+                class="w-full h-auto"
+                data-alt="A professional woman in her early 30s sitting confidently in a bright, modern office space with a clean aesthetic. She is wearing a smart-casual blazer and looking directly at the camera with a friendly, authoritative expression. Behind her, a high-end laptop displays clean data visualization charts. The lighting is soft and airy, emphasizing a successful and approachable corporate career vibe with vibrant green accents in the decor."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeE06_cmrD2ODEFUOfuNgHzwFNQa4ocSO-xaWgwi2QUrcK-3b8oi7F45GQTUJh8hFU4oFr8AAdsq6NIRRLwIQZ7kycAtta-KFfE-0K3f0IMkKH5KgL2fLdN6GX4E8QUc8Tkebd_jM9dG7vMDeQKKayXkIGMezOnSuAhdXFw25Jbfhg1ZacDFHQLBsJJ0ytQ2R9CFioqngiXokNj5AwRRHSxP4Pr412UcUVaYOGQokGMm5J6Mo-ODXNUiMGLZjdJGVFrvDVf8AScWA"
+              />
+            </div>
+            <div
+              class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl border border-outline-variant flex items-center gap-4 max-w-[280px]"
+            >
+              <div class="bg-primary/10 p-3 rounded-full">
+                <span class="material-symbols-outlined text-primary fill-icon"
+                  >bolt</span
+                >
+              </div>
+              <div>
+                <p class="font-label-md text-on-surface">
+                  3 Interviews this week
+                </p>
+                <p class="text-sm text-on-surface-variant">
+                  Using the Magnet System
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pain Point Section -->
+      <section
+        class="bg-surface-container-low py-section-padding-mobile lg:py-section-padding-desktop border-y border-outline-variant transition-all duration-700 ease-out opacity-100"
+      >
+        <div class="max-w-4xl mx-auto px-gutter text-center">
+          <h2
+            class="font-headline-lg section-title-lg section-title-strong text-on-surface mb-12"
+          >
+            Why Interviews Aren't Coming
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white rounded-xl border border-outline-variant">
+              <span class="material-symbols-outlined text-error text-4xl mb-4"
+                >cancel</span
+              >
+              <h3 class="font-headline-sm mb-2">The Resume Void</h3>
+              <p class="font-body-md text-on-surface-variant">
+                Your resume looks like a task list, not a value delivery
+                document. ATS systems ignore it.
+              </p>
+            </div>
+            <div class="p-8 bg-white rounded-xl border border-outline-variant">
+              <span class="material-symbols-outlined text-error text-4xl mb-4"
+                >cancel</span
+              >
+              <h3 class="font-headline-sm mb-2">Generic Projects</h3>
+              <p class="font-body-md text-on-surface-variant">
+                Hiring managers are tired of seeing the same Titanic or Iris
+                datasets on GitHub. You aren't standing out.
+              </p>
+            </div>
+            <div class="p-8 bg-white rounded-xl border border-outline-variant">
+              <span class="material-symbols-outlined text-error text-4xl mb-4"
+                >cancel</span
+              >
+              <h3 class="font-headline-sm mb-2">Invisible LinkedIn</h3>
+              <p class="font-body-md text-on-surface-variant">
+                Your profile is a digital paperweight. You aren't sending the
+                'Hire Me' signals recruiters search for.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- The Solution Section -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop transition-all duration-700 ease-out opacity-100"
+        id="how-it-works"
+      >
+        <div class="max-w-7xl mx-auto px-gutter">
+          <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex-1">
+              <h2
+                class="font-headline-lg section-title-lg section-title-strong section-title-green mb-6"
+              >
+                The Job Magnet System
+              </h2>
+              <p class="font-body-lg text-on-surface-variant mb-8">
+                Most people focus on <strong>Course Completion</strong>—getting
+                the certificate and hoping someone notices. The Job Magnet
+                System focuses on <strong>Signals</strong>.
+              </p>
+              <div class="space-y-6">
+                <div class="flex gap-4 items-start">
+                  <div class="bg-primary p-1 rounded-full">
+                    <span class="material-symbols-outlined text-white text-base"
+                      >check</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="font-headline-sm text-on-surface">
+                      Employer Intent
+                    </h4>
+                    <p class="font-body-md text-on-surface-variant">
+                      We align your profile with exactly what the market is
+                      searching for today.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="bg-primary p-1 rounded-full">
+                    <span class="material-symbols-outlined text-white text-base"
+                      >check</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="font-headline-sm text-on-surface">
+                      Data Narrative
+                    </h4>
+                    <p class="font-body-md text-on-surface-variant">
+                      Move beyond 'coding' to 'business problem solving'. That's
+                      what gets you paid.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="bg-primary p-1 rounded-full">
+                    <span class="material-symbols-outlined text-white text-base"
+                      >check</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="font-headline-sm text-on-surface">
+                      Active Visibility
+                    </h4>
+                    <p class="font-body-md text-on-surface-variant">
+                      Transform from a passive applicant to a sought-after
+                      professional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-1 grid grid-cols-2 gap-4">
+              <div
+                class="h-64 bg-primary-container/10 rounded-2xl flex items-center justify-center p-8 text-center border border-primary/20 bento-card"
+              >
+                <div>
+                  <span
+                    class="material-symbols-outlined text-primary text-5xl mb-4"
+                    >faucet</span
+                  >
+                  <p class="font-headline-sm text-primary">Pull Opportunity</p>
+                </div>
+              </div>
+              <div
+                class="h-64 bg-surface-container-high rounded-2xl flex items-center justify-center p-8 text-center border border-outline-variant mt-8 bento-card"
+              >
+                <div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant text-5xl mb-4"
+                    >trending_up</span
+                  >
+                  <p class="font-headline-sm text-on-surface">
+                    Career Trajectory
+                  </p>
+                </div>
+              </div>
+              <div
+                class="h-64 bg-surface-container-high rounded-2xl flex items-center justify-center p-8 text-center border border-outline-variant bento-card"
+              >
+                <div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant text-5xl mb-4"
+                    >groups</span
+                  >
+                  <p class="font-headline-sm text-on-surface">
+                    High-Value Network
+                  </p>
+                </div>
+              </div>
+              <div
+                class="h-64 bg-cta-orange/10 rounded-2xl flex items-center justify-center p-8 text-center border border-cta-orange/20 mt-8 bento-card"
+              >
+                <div>
+                  <span
+                    class="material-symbols-outlined text-cta-orange text-5xl mb-4"
+                    >work_history</span
+                  >
+                  <p class="font-headline-sm text-cta-orange">
+                    Fast-Track Hiring
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Feature Grid Section -->
+      <section
+        class="bg-on-background py-section-padding-mobile lg:py-section-padding-desktop text-white transition-all duration-700 ease-out opacity-100"
+        id="inside"
+      >
+        <div class="max-w-7xl mx-auto px-gutter">
+          <div class="text-center mb-16">
+            <h2
+              class="font-headline-lg section-title-lg section-title-strong text-on-surface mb-4"
+            >
+              <span class="bg-primary px-4 rounded section-title-black"
+                >Inside the System</span
+              >
+            </h2>
+            <p class="font-body-lg text-surface-variant max-w-2xl mx-auto">
+              A comprehensive, battle-tested framework for the modern data job
+              market.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="p-8 bg-inverse-surface rounded-2xl border border-white/10 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-primary-container text-3xl"
+                  >description</span
+                >
+              </div>
+              <h3 class="font-headline-sm mb-4">Resume Fix Playbook</h3>
+              <ul class="space-y-3 text-left w-full text-surface-variant">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  ATS-optimized templates
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Power verb dictionary
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Result-focused bullets
+                </li>
+              </ul>
+            </div>
+            <!-- Feature 2 -->
+            <div
+              class="p-8 bg-inverse-surface rounded-2xl border border-white/10 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-primary-container text-3xl"
+                  >share</span
+                >
+              </div>
+              <h3 class="font-headline-sm mb-4">LinkedIn Fix Journal</h3>
+              <ul class="space-y-3 text-left w-full text-surface-variant">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Profile SEO strategy
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Content pillars guide
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Banner &amp; Headline hacks
+                </li>
+              </ul>
+            </div>
+            <!-- Feature 3 -->
+            <div
+              class="p-8 bg-inverse-surface rounded-2xl border border-white/10 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-primary-container text-3xl"
+                  >folder_managed</span
+                >
+              </div>
+              <h3 class="font-headline-sm mb-4">Project Positioning</h3>
+              <ul class="space-y-3 text-left w-full text-surface-variant">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Business use-case focus
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  GitHub storytelling
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Technical blog templates
+                </li>
+              </ul>
+            </div>
+            <!-- Feature 4 -->
+            <div
+              class="p-8 bg-inverse-surface rounded-2xl border border-white/10 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-primary-container text-3xl"
+                  >psychology</span
+                >
+              </div>
+              <h3 class="font-headline-sm mb-4">Confidence Training</h3>
+              <ul class="space-y-3 text-left w-full text-surface-variant">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Behavioral prep scripts
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Technical demo flow
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary-container text-sm"
+                    >check_circle</span
+                  >
+                  Imposter syndrome toolkit
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Bonus Section -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop bg-primary-container/5 transition-all duration-700 ease-out opacity-100"
+      >
+        <div
+          class="max-w-5xl mx-auto px-gutter rounded-3xl overflow-hidden shadow-xl border border-primary/10 flex flex-col md:flex-row bg-white"
+        >
+          <div class="p-12 md:w-3/5">
+            <span
+              class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded mb-4 uppercase tracking-wider"
+              >High Value Bonus</span
+            >
+            <h2 class="font-headline-md text-on-surface mb-4">
+              The Strategic Networking System
+            </h2>
+            <p
+              class="font-body-md text-on-surface-variant mb-6 leading-relaxed"
+            >
+              Learn how to build relationships with decision-makers without ever
+              sending those awkward, needy "Please refer me" or "I need help"
+              messages. We show you the "Consultant Approach" to networking that
+              makes people WANT to help you.
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="bg-cta-orange/10 p-2 rounded-lg">
+                <span class="material-symbols-outlined text-cta-orange"
+                  >handshake</span
+                >
+              </div>
+              <p class="font-label-md">Value: $497 (Free with enrollment)</p>
+            </div>
+          </div>
+          <div
+            class="md:w-2/5 bg-primary p-12 flex items-center justify-center"
+          >
+            <div class="text-center">
+              <span class="material-symbols-outlined text-white text-8xl mb-4"
+                >diversity_2</span
+              >
+              <p class="text-white font-headline-sm">Connect with Purpose</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials Section -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop overflow-hidden transition-all duration-700 ease-out opacity-100"
+        id="testimonials"
+      >
+        <div class="max-w-7xl mx-auto px-gutter">
+          <div class="text-center mb-16">
+            <h2
+              class="font-headline-lg section-title-lg section-title-strong section-title-orange"
+            >
+              What Aspiring Analysts Are Saying
+            </h2>
+            <p class="font-body-lg text-on-surface-variant">
+              Real results from people who were once in your shoes.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div
+              class="testimonial-card p-8 bg-surface-container-low rounded-2xl border border-outline-variant italic relative flex flex-col space-between"
+            >
+              <span
+                class="material-symbols-outlined absolute top-4 right-4 text-primary/20 text-6xl"
+                >format_quote</span
+              >
+              <p class="font-body-lg text-on-surface mb-6 leading-relaxed">
+                “I used the ResumeFix system to reposition my experience and
+                landed an interview the same week and got the job. After
+                updating my LinkedIn, I got an inbound consulting request within
+                days.”
+              </p>
+              <div class="not-italic">
+                <p class="font-label-md">Seun O.</p>
+                <p class="text-xs text-on-surface-variant">
+                  Customer Service Background
+                </p>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div
+              class="testimonial-card p-8 bg-surface-container-low rounded-2xl border border-outline-variant italic relative flex flex-col space-between"
+            >
+              <span
+                class="material-symbols-outlined absolute top-4 right-4 text-primary/20 text-6xl"
+                >format_quote</span
+              >
+              <p class="font-body-lg text-on-surface mb-6 leading-relaxed">
+                “Within 4 days of using the ResumeFix system, I was invited to
+                complete an assessment for a data analyst role. The Project Fix
+                gave me confidence in how I present my work, and after updating
+                my LinkedIn, I started seeing consistent profile views. I’m now
+                applying with much more clarity and excited to use the
+                networking strategy next.”
+              </p>
+              <div class="not-italic">
+                <p class="font-label-md">Ayomide O.</p>
+                <p class="text-xs text-on-surface-variant">
+                  Operations Background
+                </p>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div
+              class="testimonial-card p-8 bg-surface-container-low rounded-2xl border border-outline-variant italic relative flex flex-col space-between"
+            >
+              <span
+                class="material-symbols-outlined absolute top-4 right-4 text-primary/20 text-6xl"
+                >format_quote</span
+              >
+              <p class="font-body-lg text-on-surface mb-6 leading-relaxed">
+                “I started with no experience and was overwhelmed by what
+                projects to do. The Project Fix system helped me focus on
+                solving real business problems and presenting my work clearly.
+                That’s what helped me land my first data role within 4 months
+                and within the next 7 months, I progressed into a Senior Data
+                Analyst role.”
+              </p>
+              <div class="not-italic">
+                <p class="font-label-md">Kachi E.</p>
+                <p class="text-xs text-on-surface-variant">
+                  Customer Service Background
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About the Founder -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop bg-surface-container-lowest transition-all duration-700 ease-out opacity-100"
+      >
+        <div class="max-w-7xl mx-auto px-gutter">
+          <div class="flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/3">
+              <div class="relative">
+                <div
+                  class="absolute inset-0 bg-primary translate-x-4 translate-y-4 rounded-2xl -z-10"
+                ></div>
+                <img
+                  class="rounded-2xl w-full object-cover shadow-lg"
+                  data-alt="A friendly and professional photo of Funke, a black woman with a radiant smile, sitting in a stylishly minimalist workspace. She wears a sharp green blazer, symbolizing the brand colors. Soft natural light illuminates the space, creating an encouraging and authoritative atmosphere. The image suggests someone who has successfully navigated a professional pivot and is now a mentor in the data field."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAewDEfuM7K6QukItMbJz9pMtXHUuzCUi9LLYAwob8mCgm77dfPtX2O8G2ss9bW9gTWHjGxWxEDT56C8mrMnCm8OkuL_JEvvXGaq56LnsvvmWfM2aMLm6crFvMWoNsxpMdYatzc-EPlb4cO7uCTRx8yq-PpFUXf3RO4YMIGW8CimK9LgV8fPzB4m2uIillzaSJvy5u09vPqiMW0z0nMq8wzha2BT6jfgowP79bAC0mvI2gw70ee5NaDzfu5r2vp05kEGAudt-X27y8"
+                />
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <h2 class="font-headline-lg text-on-surface mb-6">
+                Hi, I’m Funke
+              </h2>
+              <p
+                class="font-body-lg text-on-surface-variant mb-6 leading-relaxed"
+              >
+                Three years ago, I was working in sales and customer service. I
+                knew I wanted more, but the "Data Analyst" title felt like a
+                distant dream. I spent months getting rejected because I was
+                doing what everyone else was—focusing on certificates and not on
+                <strong>positioning</strong>.
+              </p>
+              <p
+                class="font-body-lg text-on-surface-variant mb-6 leading-relaxed"
+              >
+                Since then, I’ve navigated the Canadian job market, secured
+                multiple high-paying roles, and helped dozens of others do the
+                same. I didn't get hired because I was a math genius; I got
+                hired because I learned how to trigger the
+                <strong>"Hire This Person"</strong> signal in managers' brains.
+              </p>
+              <div
+                class="flex items-center gap-4 p-4 bg-primary/5 border-l-4 border-primary rounded-r-lg"
+              >
+                <span class="material-symbols-outlined text-primary"
+                  >verified</span
+                >
+                <p class="font-label-md text-primary">
+                  3 Years Experience | Canadian Tech Ecosystem | Pivot
+                  Specialist
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pricing / Final CTA Section -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop transition-all duration-700 ease-out opacity-100"
+        id="pricing"
+      >
+        <div class="max-w-4xl mx-auto px-gutter text-center">
+          <div
+            class="bg-on-background p-12 lg:p-20 rounded-[40px] shadow-2xl relative overflow-hidden"
+          >
+            <!-- Subtle background decoration -->
+            <div
+              class="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px]"
+            ></div>
+            <div
+              class="absolute -top-20 -left-20 w-80 h-80 bg-cta-orange/20 rounded-full blur-[100px]"
+            ></div>
+            <div class="relative z-10">
+              <h2 class="font-display-lg text-white mb-6">
+                Ready to become a Magnet?
+              </h2>
+              <p class="font-body-lg text-surface-variant mb-12">
+                Stop applying blindly. Get the system that transforms your
+                profile into an opportunity machine.
+              </p>
+              <div
+                class="mb-12 inline-block px-8 py-4 bg-white/5 border border-white/20 rounded-2xl"
+              >
+                <span
+                  class="text-surface-variant line-through block text-lg mb-1"
+                  >Standard Price: $297</span
+                >
+                <span class="text-white text-4xl lg:text-5xl font-bold"
+                  >Today Only: $49</span
+                >
+              </div>
+              <div class="flex flex-col items-center gap-6">
+                <a
+                  class="w-full max-w-md px-10 py-5 bg-cta-orange text-white font-headline-md rounded-xl shadow-lg hover:scale-105 transition-all text-center"
+                  href="https://stan.store/SwiftLanetodatajobs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Start Positioning Yourself Like a Hireable Analyst Today
+                </a>
+                <div class="flex gap-4 text-surface-variant font-label-md">
+                  <span class="flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >security</span
+                    >
+                    Secure Checkout</span
+                  >
+                  <span class="flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >update</span
+                    >
+                    Lifetime Access</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- FAQ Section -->
+      <section
+        class="py-section-padding-mobile lg:py-section-padding-desktop bg-surface-container-low transition-all duration-700 ease-out opacity-100"
+      >
+        <div class="max-w-3xl mx-auto px-gutter">
+          <h2
+            class="font-headline-lg section-title-lg section-title-strong text-on-surface text-center mb-12"
+          >
+            Common Questions
+          </h2>
+          <div class="space-y-6">
+            <div
+              class="faq-card p-6 bg-white rounded-xl border border-outline-variant cursor-pointer group"
+              onclick="
+                this.querySelector('.faq-answer').classList.toggle('hidden');
+                this.querySelector('.faq-icon').textContent =
+                  this.querySelector('.faq-answer').classList.contains('hidden')
+                    ? 'add'
+                    : 'remove';
+              "
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-headline-sm">Is this for me?</h4>
+                <span
+                  class="material-symbols-outlined faq-icon text-primary transition-transform"
+                  >add</span
+                >
+              </div>
+              <p
+                class="faq-answer hidden font-body-md text-on-surface-variant mt-4 pt-4 border-t border-outline-variant"
+              >
+                Yes, if you have foundational data skills but can't seem to get
+                interview invites. It's for career switchers, new grads, and
+                newcomers to Canada.
+              </p>
+            </div>
+            <div
+              class="faq-card p-6 bg-white rounded-xl border border-outline-variant cursor-pointer group"
+              onclick="
+                this.querySelector('.faq-answer').classList.toggle('hidden');
+                this.querySelector('.faq-icon').textContent =
+                  this.querySelector('.faq-answer').classList.contains('hidden')
+                    ? 'add'
+                    : 'remove';
+              "
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-headline-sm">Is this NOT for me?</h4>
+                <span
+                  class="material-symbols-outlined faq-icon text-primary transition-transform"
+                  >add</span
+                >
+              </div>
+              <p
+                class="faq-answer hidden font-body-md text-on-surface-variant mt-4 pt-4 border-t border-outline-variant"
+              >
+                This is NOT for you if you haven't started learning any tools
+                yet (Excel, SQL, Python, or PowerBI). This is about positioning,
+                not a coding bootcamp.
+              </p>
+            </div>
+            <div
+              class="faq-card p-6 bg-white rounded-xl border border-outline-variant cursor-pointer group"
+              onclick="
+                this.querySelector('.faq-answer').classList.toggle('hidden');
+                this.querySelector('.faq-icon').textContent =
+                  this.querySelector('.faq-answer').classList.contains('hidden')
+                    ? 'add'
+                    : 'remove';
+              "
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-headline-sm">Do I get support?</h4>
+                <span
+                  class="material-symbols-outlined faq-icon text-primary transition-transform"
+                  >add</span
+                >
+              </div>
+              <p
+                class="faq-answer hidden font-body-md text-on-surface-variant mt-4 pt-4 border-t border-outline-variant"
+              >
+                You get access to our community of magnet analysts and monthly
+                Q&amp;A sessions with Funke.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant">
+      <div
+        class="max-w-7xl mx-auto px-gutter py-12 flex flex-col md:flex-row justify-between items-center gap-8"
+      >
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <img
+            alt="Swift Lane Footer Logo"
+            class="h-14 w-auto"
+            src="/images/logoimage.png"
+          />
+          <p class="text-on-surface-variant font-body-md">
+            © 2024 Swift Lane. All rights reserved.
+          </p>
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-on-surface-variant hover:text-primary underline transition-all font-body-md"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary underline transition-all font-body-md"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary underline transition-all font-body-md"
+            href="#"
+            >Join the System</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Simple intersection observer for reveal animations
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100");
+            entry.target.classList.remove("translate-y-10");
+          }
+        });
+      }, observerOptions);
+
+      // Applying simple reveal to sections
+      document.querySelectorAll("section").forEach((section) => {
+        section.classList.add("transition-all", "duration-700", "ease-out");
+        // Adding initial state if not in view (optional for a landing page)
+        // section.classList.add('opacity-0', 'translate-y-10');
+        observer.observe(section);
+      });
+
+      // CTA Button Interaction
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+      const mobileOverlay = document.getElementById("mobile-overlay");
+
+      const toggleMobileMenu = (show) => {
+        if (!mobileOverlay) return;
+        mobileOverlay.classList.toggle("hidden", !show);
+        document.body.classList.toggle("overflow-hidden", show);
+      };
+
+      mobileMenuBtn?.addEventListener("click", () => toggleMobileMenu(true));
+      mobileMenuClose?.addEventListener("click", () => toggleMobileMenu(false));
+      mobileOverlay?.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", () => toggleMobileMenu(false));
+      });
+    </script>
+  </body>
+</html>
